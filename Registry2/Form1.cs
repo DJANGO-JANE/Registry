@@ -17,6 +17,14 @@ namespace Registry2
         public Form1()
         {
             InitializeComponent();
+
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                string app_d = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                AppDomain.CurrentDomain.SetData("DataDirectory", app_d);
+            }
+
+
             cmbGender.SelectedIndex = 0;
            UserService.PopulateDGV(dgvDash);
             UpdateReportComboBoxes();
